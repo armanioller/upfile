@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-
     <title>File Upload HUD</title>
     <style>
-         body {
+        body {
             font-family: 'Roboto', sans-serif;
             background-color: #f0f0f0;
             display: flex;
@@ -15,17 +14,17 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            transform: scale(0.9); /* 90% Zoom */
-            transform-origin: top left; /* Set the origin to the top left corner */
         }
 
-        .containe {
-            width:90%;
+        .container {
             background-color: white;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            width: 100%;
+            max-width: 1200px; /* Optional: Set a maximum width */
+            box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
         }
 
         h1 {
@@ -99,8 +98,12 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .icon {
@@ -172,9 +175,9 @@
         }
 
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
+            navigator.clipboard.writeText(text).then(function () {
                 alert('Link copied to clipboard');
-            }, function(err) {
+            }, function (err) {
                 alert('Failed to copy text: ', err);
             });
         }
