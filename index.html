@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+d<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,6 +17,7 @@
             margin: 0;
             
         }
+        
 
         input,select,button{
               font-size:110%;
@@ -86,6 +87,7 @@
         a {
             color: #4CAF50;
             text-decoration: none;
+            cursor:pointer;
         }
 
         a:hover {
@@ -167,7 +169,7 @@
 
                 const data = await response.text();
                 status.innerHTML = `File uploaded successfully! <br>
-                   <a href="${data}" target="_blank"> <img src="https://img.icons8.com/material-rounded/24/000000/external-link.png" class="icon" /> View </a> 
+                   <a href="secondlife://app/openfloater/web_content?url=${data}" target="_blank"> <img src="https://img.icons8.com/material-rounded/24/000000/external-link.png" class="icon" /> View </a> 
                     <a href="#" onclick="copyToClipboard('${data}')"><img src="https://img.icons8.com/material-rounded/24/000000/copy.png" class="icon" /> Copy Link </a>`;
             } catch (error) {
                 spinner.style.display = 'none';
