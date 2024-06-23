@@ -8,24 +8,17 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            font-size:200%;
+            font-size: 200%;
             background-color: #f0f0f0;
-           /* display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;*/
             margin: 0;
-            
         }
 
-        *{
-            
-            cursor:pointer;
+        * {
+            cursor: pointer;
         }
-        
 
-        input,select,button{
-              font-size:110%;
+        input, select, button {
+            font-size: 110%;
         }
 
         .container {
@@ -35,15 +28,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 100%;
-            box-sizing: border-box; /* Garante que o padding e a borda sejam incluídos na largura total do elemento */
+            box-sizing: border-box;
         }
 
         h1 {
             color: #333;
             margin-bottom: 10px;
         }
-
-        
 
         input[type="file"] {
             display: none;
@@ -110,18 +101,63 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .icon {
             margin-left: 10px;
             vertical-align: middle;
         }
+
+        /* Estilos para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
+    <button class="button" id="helpBtn">Help</button>
     <div class="container">
         <h1>File Upload</h1>
         <input type="file" id="fileInput">
@@ -138,6 +174,23 @@
         <div class="spinner" id="spinner"></div>
         <div class="status" id="status"></div>
     </div>
+
+    <!-- Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>General</h2>
+            <p><strong>What is this?</strong></p>
+            <p>Temporary file storage, so you don't have to waste my disk space, or if you just want to upload something anonymously but have it deleted after a while. Pretty neat huh?</p>
+            <p><strong>What file types aren't allowed?</strong></p>
+            <p>The following file types are currently not allowed: .exe, .scr, .cpl, .doc*, .jar</p>
+            <h2>Banned Content</h2>
+            <p>Do not upload: Child pornography, viruses/malware, entire episodes of anime, or full length episodes of TV shows, or heavy gore. I will purge your uploads if anything you upload violates these rules. See our Acceptable Use Policy and Terms of Service for more info.</p>
+            <p>You cannot use Catbox for commercial services without prior approval. Examples include as a CDN, image host for your business/ecommerce site, or a source for videos that are streamed on sites other than files.catbox.moe directly.</p>
+            <p>Should you violate any of the above banned content, your offending files will be deleted and your IP blacklisted.</p>
+        </div>
+    </div>
+
     <script>
         async function uploadFile() {
             const fileInput = document.getElementById('fileInput');
@@ -188,6 +241,25 @@
             }, function (err) {
                 alert('Failed to copy text: ', err);
             });
+        }
+
+        // Modal script
+        const modal = document.getElementById("helpModal");
+        const btn = document.getElementById("helpBtn");
+        const span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
 </body>
