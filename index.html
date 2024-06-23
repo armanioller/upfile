@@ -237,8 +237,7 @@
 
                 const data = await response.text();
                 status.innerHTML = `File uploaded successfully! <br>
-                   <a href="${data}" target="_external"> <img src="https://img.icons8.com/material-rounded/24/000000/external-link.png" class="icon" /> View </a> 
-                    <a href="#" onclick="copyToClipboard('${data}')"><img src="https://img.icons8.com/material-rounded/24/000000/copy.png" class="icon" /> Copy Link </a>`;
+                   <a href="#" onclick="copyToClipboard('${data}')"><img src="https://img.icons8.com/material-rounded/24/000000/copy.png" class="icon" /> Copy Link </a>`;
             } catch (error) {
                 spinner.style.display = 'none';
                 status.textContent = 'Failed to upload file.';
