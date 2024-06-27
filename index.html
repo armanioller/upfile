@@ -180,8 +180,8 @@
         </select>
         <br>
         <button class="button" onclick="uploadFile()">Upload</button>
-        <div class="spinner" id="spinner"></div>
-        <div class="status" id="status"></div>
+        <div class="spinner" id="spinner" style="display: none;"></div>
+        <div class="status" id="status">Failed to upload file.</div>
     </div>
 
     <!-- Modal -->
@@ -238,7 +238,7 @@
 
           
                 const data = await response.text();
-                const resp_get = await fetch('https://upfile.epizy.com/co.php?s=${data}');
+                const resp_get = await fetch(`https://upfile.epizy.com/co.php?s=${data}`);
                 status.innerHTML = `File uploaded successfully! <br>
                    <a href="#" onclick="copyToClipboard('${data}')"><img src="https://img.icons8.com/material-rounded/24/000000/copy.png" class="icon" /> Copy Link </a>`;
             } catch (error) {
@@ -275,6 +275,7 @@
             }
         }
     </script>
+
 
 
 
